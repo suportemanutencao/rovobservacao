@@ -1,117 +1,191 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROV Falcon - Oceânica Engenharia</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            background-color: #043927; /* Verde petróleo escuro */
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: #025939; /* Verde Petrobras */
-        }
-        header h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-        .gallery {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 60px 20px;
-        }
-.image-container {
-    position: relative;
-    width: 300px;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-}
+  <meta charset="UTF-8">
+  <link rel="icon" href="images/logo.png" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Suporte ROV Observação</title>
 
-.image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-}
+  <!-- Fonte Montserrat Extra Bold -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:900&display=swap" rel="stylesheet">
 
-.image-container:hover img {
-    transform: scale(1.1);
-}
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0
+      padding: 0;
+      font-family: 'Montserrat', sans-serif;
+      overflow: hidden;
+    }
 
-.image-container:active {
-    transform: scale(0.95);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.7);
-}
+    body {
+      background-image: url(images/FundoSite.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
 
-.image-container .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2em;
-    font-weight: bold;
-    color: #ffffff;
-    opacity: 1;
-    pointer-events: none; /* garante que clique passa para a imagem/link */
-}
+    .linha-unica {
+      white-space: nowrap;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #025939;
-            font-size: 0.9em;
-        }
-    </style>
+    h1 {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-weight: 900;
+      font-size: 2.5rem;
+      text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
+      opacity: 0;
+      animation: moverDesaparecerReaparecer 5s ease-out forwards;
+      text-align: center;
+      z-index: 10;
+      line-height: 1.3;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    @keyframes moverDesaparecerReaparecer {
+      0% {
+        top: -100px;
+        opacity: 0;
+      }
+      40% {
+        top: 30%;
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      70% {
+        opacity: 0;
+      }
+      100% {
+        top: 30%;
+        opacity: 1;
+      }
+    }
+
+    .chat-tooltip {
+      position: fixed;
+      bottom: 75px;
+      right: 5px;
+      background-color: #005f5b;
+      color: #FFFFFF;
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      z-index: 1002;
+      animation: bounce 1.5s infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tooltip-emoji {
+      font-size: 22px;
+      margin-top: 2px;
+    }
+
+    .chat-tooltip.hidden {
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+      transition: all 0.4s ease;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    df-messenger {
+      z-index: 1003 !important;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @media (orientation: portrait) and (max-width: 480px) {
+      h1 {
+        font-size: 1.6rem;
+        top: 25%;
+      }
+    }
+
+    @media screen and (orientation: portrait), screen and (orientation: landscape) {
+      body {
+        background-size: cover;
+        background-position: center;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>ROV Falcon - Oceânica Engenharia</h1>
-    </header>
 
-    <section class="gallery">
-        <a href="https://www.oceanica.com.br" target="_blank">
-            <div class="image-container">
-                <img src="BotFalcon/images/oceanica2.png" alt="Operação Oceânica">
-                <div class="overlay">Oceânica</div>
-            </div>
-        </a>
-        <a href="https://www.exemplo.com/manual" target="_blank">
-            <div class="image-container">
-               <img src="BotFalcon/images/falcon1.jpg" alt="Falcon ROV">
-                <div class="overlay">Manual</div>
-            </div>
-        </a>
-    </section>
-<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-<df-messenger
-  intent="WELCOME"
-  chat-title="Falcon"
-  agent-id="e32e39a6-5484-48e2-bb05-6cb7ac67de7f"
-  language-code="pt-br"
-></df-messenger>
+  <h1>
+    <span class="linha-unica">SUPORTE TÉCNICO</span>
+    <span>ROV OBSERVAÇÃO</span>
+  </h1>
 
-    <footer>
-        &copy; 2025 Oceânica Engenharia e Consultoria. Todos os direitos reservados.
-    </footer>
+  <!-- Tooltip -->
+  <div class="chat-tooltip" id="chat-tooltip">
+    <div class="tooltip-text">ChatBot!</div>
+    <div class="tooltip-emoji">👇</div>
+  </div>
+
+  <!-- Dialogflow Messenger -->
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+    intent="WELCOME"
+    chat-title="FalconMenu"
+    agent-id="715933f0-6541-4155-b5de-7c7631a68915"
+    language-code="pt-br"
+  ></df-messenger>
+
+  <!-- Script para ocultar o balão -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const tooltip = document.getElementById('chat-tooltip');
+
+      const hideTooltip = () => {
+        if (tooltip && !tooltip.classList.contains('hidden')) {
+          tooltip.classList.add('hidden');
+        }
+      };
+
+      setTimeout(hideTooltip, 7000);
+
+      const waitForButton = () => {
+        const dfMessenger = document.querySelector('df-messenger');
+        if (!dfMessenger) return setTimeout(waitForButton, 300);
+
+        const shadowRoot = dfMessenger.shadowRoot;
+        if (!shadowRoot) return setTimeout(waitForButton, 300);
+
+        const chatButton = shadowRoot.querySelector('df-messenger-chat-open-button');
+        if (!chatButton || !chatButton.shadowRoot) return setTimeout(waitForButton, 300);
+
+        const button = chatButton.shadowRoot.querySelector('button');
+        if (!button) return setTimeout(waitForButton, 300);
+
+        button.addEventListener('click', hideTooltip);
+      };
+
+      waitForButton();
+    });
+  </script>
+
 </body>
 </html>
-
-
