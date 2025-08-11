@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="images/logo.png" type="image/x-icon" />
+  <link rel="icon" href="BotFalcon/images/logo.png" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Suporte ROV Observação</title>
 
@@ -12,14 +12,14 @@
   <style>
     html, body {
       height: 100%;
-      margin: 0
+      margin: 0;
       padding: 0;
       font-family: 'Montserrat', sans-serif;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     body {
-      background-image: url('images/FundoSite.jpg');
+      background-image: url('BotFalcon/images/FundoSite.jpg');
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
@@ -72,6 +72,40 @@
       }
     }
 
+    /* Container com os boxes */
+    .box-container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 250px; /* espaço para o título */
+      flex-wrap: wrap;
+    }
+
+    .box {
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0,0,0,0.8);
+    }
+
+    .box img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 8px;
+    }
+
+    /* Tooltip */
     .chat-tooltip {
       position: fixed;
       bottom: 75px;
@@ -107,13 +141,13 @@
       50% { transform: translateY(-6px); }
     }
 
-    df-messenger {
-      z-index: 1003 !important;
-    }
-
     @media (max-width: 768px) {
       h1 {
         font-size: 2rem;
+      }
+      .box {
+        width: 80%;
+        height: 250px;
       }
     }
 
@@ -124,12 +158,6 @@
       }
     }
 
-    @media screen and (orientation: portrait), screen and (orientation: landscape) {
-      body {
-        background-size: cover;
-        background-position: center;
-      }
-    }
   </style>
 </head>
 <body>
@@ -139,22 +167,23 @@
     <span>ROV OBSERVAÇÃO</span>
   </h1>
 
+  <!-- Boxes com imagens -->
+  <div class="box-container">
+    <a href="link1.html" class="box">
+      <img src="BotFalcon/images/imagem1.png" alt="Link 1">
+    </a>
+    <a href="link2.html" class="box">
+      <img src="BotFalcon/images/imagem2.png" alt="Link 2">
+    </a>
+  </div>
+
   <!-- Tooltip -->
   <div class="chat-tooltip" id="chat-tooltip">
     <div class="tooltip-text">ChatBot!</div>
     <div class="tooltip-emoji">👇</div>
   </div>
 
-  <!-- Dialogflow Messenger -->
-  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-  <df-messenger
-    intent="WELCOME"
-    chat-title="FalconMenu"
-    agent-id="715933f0-6541-4155-b5de-7c7631a68915"
-    language-code="pt-br"
-  ></df-messenger>
-
-  <!-- Script para ocultar o balão -->
+  <!-- Script Tooltip -->
   <script>
     window.addEventListener('DOMContentLoaded', () => {
       const tooltip = document.getElementById('chat-tooltip');
@@ -166,27 +195,8 @@
       };
 
       setTimeout(hideTooltip, 7000);
-
-      const waitForButton = () => {
-        const dfMessenger = document.querySelector('df-messenger');
-        if (!dfMessenger) return setTimeout(waitForButton, 300);
-
-        const shadowRoot = dfMessenger.shadowRoot;
-        if (!shadowRoot) return setTimeout(waitForButton, 300);
-
-        const chatButton = shadowRoot.querySelector('df-messenger-chat-open-button');
-        if (!chatButton || !chatButton.shadowRoot) return setTimeout(waitForButton, 300);
-
-        const button = chatButton.shadowRoot.querySelector('button');
-        if (!button) return setTimeout(waitForButton, 300);
-
-        button.addEventListener('click', hideTooltip);
-      };
-
-      waitForButton();
     });
   </script>
 
 </body>
 </html>
-
