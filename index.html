@@ -15,16 +15,24 @@
       margin: 0;
       padding: 0;
       font-family: 'Montserrat', sans-serif;
-      overflow-x: hidden;
     }
 
     body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
       background-image: url('images/FundoSite.jpg');
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
       background-attachment: fixed;
-      position: relative;
+    }
+
+    main {
+      flex: 1; /* Faz o conteúdo ocupar o espaço disponível entre topo e footer */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .linha-unica {
@@ -32,7 +40,8 @@
     }
 
     h1 {
-      position: absolute;
+      margin-top: 0;
+      position: relative;
       top: -100px;
       left: 50%;
       transform: translateX(-50%);
@@ -117,19 +126,22 @@
       z-index: 2;
       pointer-events: none;
     }
-    
-  .footer-v2 {
-    background-color: #003c3a; /* ajuste conforme cor original */
-    color: white;
-    padding: 15px 0;
-    text-align: center;
-  }
 
-  .footer-v2__caption p {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 500;
-  }
+    /* Footer */
+    .footer-v2 {
+      background-color: #003c3a;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+    }
+
+    .footer-v2__caption p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* Responsivo */
     @media (max-width: 768px) {
       h1 {
         font-size: 2rem;
@@ -151,33 +163,31 @@
 </head>
 <body>
 
-  <h1>
-    <span class="linha-unica">SUPORTE TÉCNICO</span>
-    <span>ROV OBSERVAÇÃO</span>
-  </h1>
+  <main>
+    <h1>
+      <span class="linha-unica">SUPORTE TÉCNICO</span>
+      <span>ROV OBSERVAÇÃO</span>
+    </h1>
 
-  <!-- Boxes com imagens e títulos -->
-  <div class="box-container">
-    <a href="falcon.html" class="box">
-      <img src="images/falcon1.jpg" alt="Link 1">
-      <div class="box-title">Falcon</div>
-    </a>
-    <a href="link2.html" class="box">
-      <img src="BotFalcon/images/imagem2.png" alt="Link 2">
-      <div class="box-title">Outro Modelo</div>
-    </a>
-  </div>
-<footer class="footer-v2">
-  <div class="footer-v2__caption">
-    <div class="container">
-      <p>Copyright © 2025 OCEÂNICA | Todos os direitos reservados</p>
+    <div class="box-container">
+      <a href="falcon.html" class="box">
+        <img src="images/falcon1.jpg" alt="Link 1">
+        <div class="box-title">Falcon</div>
+      </a>
+      <a href="link2.html" class="box">
+        <img src="BotFalcon/images/imagem2.png" alt="Link 2">
+        <div class="box-title">Outro Modelo</div>
+      </a>
     </div>
-  </div>
-</footer>
+  </main>
+
+  <footer class="footer-v2">
+    <div class="footer-v2__caption">
+      <div class="container">
+        <p>Copyright © 2025 OCEÂNICA | Todos os direitos reservados</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
-
-
-
-
