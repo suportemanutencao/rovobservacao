@@ -57,7 +57,7 @@
         opacity: 0;
       }
       40% {
-        top: 30vh; /* posição inicial visível */
+        top: 30vh;
         opacity: 1;
       }
       50% {
@@ -67,7 +67,7 @@
         opacity: 0;
       }
       100% {
-        top: 10vh; /* posição final mais acima e responsiva */
+        top: 10vh;
         opacity: 1;
       }
     }
@@ -77,20 +77,17 @@
       display: flex;
       justify-content: center;
       gap: 40px;
-      margin-top: 250px; /* espaço para o título */
+      margin-top: 250px;
       flex-wrap: wrap;
     }
 
     .box {
+      position: relative;
       width: 300px;
       height: 300px;
-      background: rgba(255, 255, 255, 0.1);
       border-radius: 12px;
       box-shadow: 0 0 15px rgba(0,0,0,0.5);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -100,45 +97,25 @@
     }
 
     .box img {
-      max-width: 80%;
-      max-height: 80%;
-      border-radius: 8px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    /* Tooltip */
-    .chat-tooltip {
-      position: fixed;
-      bottom: 75px;
-      right: 5px;
-      background-color: #005f5b;
-      color: #FFFFFF;
-      padding: 8px 10px;
-      border-radius: 12px;
-      font-weight: bold;
-      font-size: 16px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-      z-index: 1002;
-      animation: bounce 1.5s infinite;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .tooltip-emoji {
-      font-size: 22px;
-      margin-top: 2px;
-    }
-
-    .chat-tooltip.hidden {
-      opacity: 0;
-      transform: translateY(-20px);
+    /* Título dentro da box */
+    .box-title {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-weight: 900;
+      font-size: 1.5rem;
+      text-align: center;
+      text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
+      z-index: 2;
       pointer-events: none;
-      transition: all 0.4s ease;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
     }
 
     @media (max-width: 768px) {
@@ -167,13 +144,15 @@
     <span>ROV OBSERVAÇÃO</span>
   </h1>
 
-  <!-- Boxes com imagens -->
+  <!-- Boxes com imagens e títulos -->
   <div class="box-container">
     <a href="falcon.html" class="box">
       <img src="images/falcon1.jpg" alt="Link 1">
+      <div class="box-title">Falcon</div>
     </a>
     <a href="link2.html" class="box">
       <img src="BotFalcon/images/imagem2.png" alt="Link 2">
+      <div class="box-title">Outro Modelo</div>
     </a>
   </div>
 
