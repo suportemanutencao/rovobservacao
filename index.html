@@ -28,58 +28,48 @@
       background-attachment: fixed;
     }
 
-    main {
-      flex: 1; /* Faz o conteúdo ocupar o espaço disponível entre topo e footer */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centraliza verticalmente */
+  padding: 20px; /* para não encostar nas bordas */
+}
 
-    .linha-unica {
-      white-space: nowrap;
-    }
+h1 {
+  position: relative; /* remove top absoluto */
+  transform: none;   /* remove translateX(-50%) */
+  margin-bottom: 50px; /* distância das boxes */
+  font-size: 2.5rem;
+  color: white;
+  font-weight: 900;
+  text-align: center;
+  text-shadow: 4px 4px 12px rgba(0,0,0,0.9);
+  opacity: 0;
+  animation: moverDesaparecerReaparecer 5s ease-out forwards;
+}
 
-    h1 {
-      margin-top: 0;
-      position: relative;
-      top: -100px;
-      left: 50%;
-      transform: translateX(-50%);
-      color: white;
-      font-weight: 900;
-      font-size: 2.5rem;
-      text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.9);
-      opacity: 0;
-      animation: moverDesaparecerReaparecer 5s ease-out forwards;
-      text-align: center;
-      z-index: 10;
-      line-height: 1.3;
-    }
-
-    h1 span {
-      display: block;
-    }
-
-    @keyframes moverDesaparecerReaparecer {
-      0% {
-        top: -100px;
-        opacity: 0;
-      }
-      40% {
-        top: 30vh;
-        opacity: 1;
-      }
-      50% {
-        opacity: 0;
-      }
-      70% {
-        opacity: 0;
-      }
-      100% {
-        top: 10vh;
-        opacity: 1;
-      }
-    }
+@keyframes moverDesaparecerReaparecer {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
     /* Container com os boxes */
     .box-container {
@@ -191,3 +181,4 @@
 
 </body>
 </html>
+
